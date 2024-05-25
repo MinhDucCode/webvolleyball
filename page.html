@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Câu Lạc Bộ Bóng Chuyền Trường Học ITC</title>
+    <link rel="stylesheet" href="./style/home.css">
+    <script src="./backend/backend.js" defer></script>
+    <link rel="icon" type="image/png" href="./images/1.png" />
+
+</head>
+
+<body>
+    <header>
+        <h1>Câu Lạc Bộ Bóng Chuyền Trường Học ITC</h1>
+    </header>
+    <div id="newContentContainer"></div>
+    <div class="container">
+        <h2>Chào mừng bạn đã đến với Câu lạc Bộ bóng chuyền của trường cao đẳng công nghệ thông tin Tp HCM</h2>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-number">95</span>
+                <span class="stat-description">Ngày Thành Lập</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">23</span>
+                <span class="stat-description"> Sinh viên Khóa</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="memberCount">2</span>
+                <span class="stat-description">Thành viên Tham Gia Câu lạc bộ</span>
+            </div>
+        </div>
+        <br>
+        <div class="anh">
+            <img src="./images/anhhome2.jpg" alt="anh1">
+        </div>
+        <div class="joinClub">
+            <h3>Tham Nhóm ZALO</h3>
+            <img src="./images/QRcode.jpg" alt="QR Code" class="qr-code">
+            <a href="https://zalo.me/g/krtlva929">Tham Gia Ngay</a>
+        </div>
+        <b><p>Địa chỉ:12 Trình Đình Thảo, Phường Hòa Thạnh, Quận Tân Phú, TP Hồ Chí Minh</p></b>
+        <div class="map">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.6023479043136!2d106.70249051526066!3d10.76262219233271!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f3f6d2e4bff%3A0xe21dd0b07b4b0a3c!2zVMOibiBUaMOhY2ggU8O9IE7GsCBM4buRYyBUaMOgbmggWHXDom4gxJDhu6ljIFRo4buLIFRow6BuaA!5e0!3m2!1svi!2s!4v1622978580531!5m2!1svi!2s" 
+                width="600" 
+                height="450" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+           <br>
+        </div>
+        <br><br>
+    </div>
+    <footer>
+        <p>&copy; Vũ Minh Đức & Nguyễn Gia Khang - DEVELOPER</p>
+    </footer>
+    <script>
+        // Script to set the member count
+        document.getElementById('memberCount').textContent = "2"; // Replace 2 with the actual member count
+    </script>
+</body>
+
+</html>

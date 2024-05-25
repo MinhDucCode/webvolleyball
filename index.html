@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Câu Lạc Bộ Bóng Chuyền Trường Học ITC</title>
+    <link rel="stylesheet" href="./style/home.css">
+    <link rel="icon" type="image/png" href="./images/1.png" />
+    <style>
+        /* CSS cho thông tin thời tiết */
+        #weather-popup {
+            position: fixed;
+            top: 250px;
+            right: 10px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            z-index: 9999; /* Đảm bảo hiển thị trên các phần khác của trang */
+        }
+
+        #weather-popup img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        #weather-popup .temperature {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        #weather-popup .description {
+            font-size: 16px;
+        }
+
+        #weather-popup .close {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            cursor: pointer;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Câu Lạc Bộ Bóng Chuyền Trường Học ITC</h1>
+    </header>
+    <nav>
+        <a href="#home">Trang Chủ</a>
+        <a href="#schedule">Câu Lạc Bộ</a>
+        <a href="#gallery">Góc Hình Ảnh</a>
+        <a href="#contact">Liên Hệ</a>
+    </nav>
+    <div class="container">
+        <section id="home">
+            <h2>Đăng nhập để sử dụng tất cả tính năng</h2>
+            <h2>Trang Chủ</h2>
+            <p>Welcome to our school volleyball club website.</p>
+            <!-- Nội dung trang chủ -->
+        </section>
+        <section id="register">
+            <h2>Đăng Ký Tham Gia</h2>
+            <p>Fill out the form below to register for the club.</p>
+        </section>
+        <section id="schedule">
+            <h2>Lịch Thi Đấu</h2>
+            <p>Check out our upcoming matches and results.</p>
+            <!-- Lịch thi đấu -->
+        </section>
+        <section id="gallery">
+            <h2>Góc Hình Ảnh</h2>
+            <p>View photos and videos from our matches and events.</p>
+            <!-- Góc hình ảnh -->
+        </section>
+        <section id="contact">
+            <h2>Liên Hệ</h2>
+            <p>Contact us for more information about our club.</p>
+            <!-- Thông tin liên hệ -->
+        </section>
+    </div>
+    <div class="profile-container">
+        <img src="./images/volleyball.jpg" alt="Profile Picture" class="profile-picture" id="profilePicture">
+        <div class="dropdown-content">
+            <input type="file" id="profileImageInput" style="display:none" onchange="changeProfilePicture(event)">
+            <a href="./register.html">Sign Up</a>
+            <a href="./login.html">Log In</a>
+        </div>
+    </div>
+    <!-- Các phần khác của trang -->
+    <div id="weather-popup">
+        <span class="close" onclick="closeWeatherPopup()">&times;</span>
+        <div id="weather-content"></div>
+    </div>
+
+    <script>
+        // JavaScript cho lấy dữ liệu thời tiết và hiển thị popup
+        window.addEventListener('load', () => {
+            fetchWeatherData();
+        });
+
+        function fetchWeatherData() {
+            const city = 'ho chi minh'; // Thay đổi thành thành phố của bạn
+            const apiKey = '124b92a8dd9ec01ffb0dbf64bc44af3c';
+            const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const weatherContentDiv = document.getElementById('weather-content');
+                    const iconUrl = `https://openweathermap.org/img/w/${data.weather[0].icon}.png`;
+                    const temperature = Math.round(data.main.temp - 273.15); // Chuyển đổi từ độ K sang độ C
+                    const description = data.weather[0].description;
+
+                    // Tạo phần tử img để hiển thị biểu tượng thời tiết
+                    const iconImg = document.createElement('img');
+                    iconImg.src = iconUrl;
+
+                    // Tạo phần tử div để chứa thông tin thời tiết
+                    const weatherInfoDiv = document.createElement('div');
+                    weatherInfoDiv.classList.add('weather-info');
+
+                    // Hiển thị nhiệt độ
+                    // Hiển thị nhiệt độ và mô tả thời tiết
+                    const temperatureElement = document.createElement('p');
+                    temperatureElement.classList.add('temperature');
+                    temperatureElement.textContent = `${temperature}°C`;
+
+                    const descriptionElement = document.createElement('p');
+                    descriptionElement.classList.add('description');
+                    descriptionElement.textContent = description;
+
+                    // Thêm phần tử vào div chứa thông tin thời tiết
+                    weatherInfoDiv.appendChild(iconImg);
+                    weatherInfoDiv.appendChild(temperatureElement);
+                    weatherInfoDiv.appendChild(descriptionElement);
+
+                    // Xóa nội dung cũ trước khi thêm mới
+                    weatherContentDiv.innerHTML = '';
+
+                    // Thêm div chứa thông tin thời tiết vào phần tử weather-content
+                    weatherContentDiv.appendChild(weatherInfoDiv);
+
+                    // Hiển thị popup thời tiết
+                    document.getElementById('weather-popup').style.display = 'block';
+                })
+                .catch(error => console.error('Error fetching weather data:', error));
+        }
+
+        function closeWeatherPopup() {
+            document.getElementById('weather-popup').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

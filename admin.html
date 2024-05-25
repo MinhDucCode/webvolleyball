@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Volleyball Club</title>
+    <link rel="stylesheet" href="./style/admin.css">
+    <script src="./backend/backend.js" defer></script>
+    <script src="./backend/admin.js"></script>
+    <link rel="icon" type="image/png" href="./images/1.png" />
+
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard - Volleyball Club</h1>
+        <input type="submit" id="logoutBtn" value="Đăng xuất">
+    </header>
+    <div class="content">
+        <a href="index.html" style="text-decoration: none; color: #000; display: block; text-align: left;">&larr; Back to Home</a>
+        <h2>Welcome, Admin!</h2>
+        <div>
+            <h3>Registered Users:</h3>
+            <ul id="userList"></ul>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', displayUserList);
+    </script>
+</body>
+
+</html>

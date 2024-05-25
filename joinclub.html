@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Ký Tham Gia - Câu Lạc Bộ Bóng Chuyền Trường Học</title>
+    <link rel="stylesheet" href="./style/joinclub.css">
+    <script src="./backend/backend.js"></script>
+    <link rel="icon" type="image/png" href="./images/1.png" />
+</head>
+
+<body>
+    <header>
+        <h1>Đăng Ký Tham Gia - Câu Lạc Bộ Bóng Chuyền Trường Học</h1>
+    </header>
+    <div id="newContentContainer"></div>
+    <div>
+        <h2>Danh Sách Câu Lạc Bộ Bóng Chuyền</h2>
+        <ul id="clubList">
+            <li id="club1">
+                <span class="club-name">Câu Lạc Bộ Bóng Chuyền A</span>
+                <span class="club-location">Hà Nội</span>
+                <button onclick="joinClub('club1')">Tham Gia</button>
+                <button onclick="leaveClub('club1')" style="display: none;">Rời Nhóm</button>
+            </li>
+            <li id="club2">
+                <span class="club-name">Câu Lạc Bộ Bóng Chuyền B</span>
+                <span class="club-location">Hồ Chí Minh</span>
+                <button onclick="joinClub('club2')">Tham Gia</button>
+                <button onclick="leaveClub('club2')" style="display: none;">Rời Nhóm</button>
+            </li>
+            <!-- Thêm các câu lạc bộ khác vào đây -->
+        </ul>
+    </div>
+
+    <footer>
+        <p>&copy; Vũ Minh Đức & Nguyễn Gia Khang - DEVERLOPER</p>
+    </footer>
+
+    <script>
+        // Mảng lưu trữ trạng thái tham gia của người dùng
+        var userClubs = {};
+
+        function joinClub(clubId) {
+            userClubs[clubId] = true;
+            document.getElementById(clubId).querySelector('button:nth-of-type(1)').style.display = 'none';
+            document.getElementById(clubId).querySelector('button:nth-of-type(2)').style.display = 'block';
+            alert('Bạn đã tham gia câu lạc bộ ' + clubId);
+        }
+
+        function leaveClub(clubId) {
+            delete userClubs[clubId];
+            document.getElementById(clubId).querySelector('button:nth-of-type(1)').style.display = 'block';
+            document.getElementById(clubId).querySelector('button:nth-of-type(2)').style.display = 'none';
+            alert('Bạn đã rời câu lạc bộ ' + clubId);
+        }
+    </script>
+</body>
+
+</html>

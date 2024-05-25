@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="./style/dungchung.css">
+
+<nav>
+    <a href="./page.html">Trang Chủ</a>
+    <a href="./joinclub.html">Câu Lạc Bộ</a>
+    <a href="./gochinhanh.html">Góc Hình Ảnh</a>
+    <a href="contact.html">Liên Hệ</a>
+</nav>
+<div class="container">
+    <div class="profile-container">
+        <img src="./images/volleyball.jpg" alt="Profile Picture" class="profile-picture" id="profilePicture">
+        <div class="dropdown-content">
+            <button onclick="showProfilePopup()">View/Edit Profile</button>
+            <button onclick="logout()">Log Out</button>
+        </div>
+    </div>
+<div id="profilePopup" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeProfilePopup()">&times;</span>
+        <h2>Profile Information</h2>
+        <form id="profileForm" onsubmit="updateProfile(event)">
+            <label for="profileUsername">Username:</label>
+            <input type="text" id="profileUsername" name="profileUsername" required>
+            <label for="profileMSSV">MSSV:</label>
+            <input type="text" id="profileMSSV" name="profileMSSV" required disabled>
+            <label for="profilePassword">New Password:</label>
+            <input type="password" id="profilePassword" name="profilePassword" required>
+            <input type="submit" value="Update">
+        </form>
+    </div>
+</div>
+<link rel="icon" type="image/png" href="./images/1.png" />
